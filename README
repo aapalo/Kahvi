@@ -1,0 +1,8 @@
+
+Tiedostot:
+
+kahvi1.		@Iteaduino. 
+kahvi.py	@PC. Lukee statuksen ja lämpötilan, tallentaa tiedot ja lähettää eteenpäin.
+index.html	@Webserver. Piirtää kuvaajat
+todo.txt	Kehitysideoita
+
