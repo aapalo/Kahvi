@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<body>
+
+<script type="text/javascript"
+  src="http://dygraphs.com/dygraph-combined.js"></script>
+
+<div id="graphdiv1"
+style="width:99%;float:left"></div>
+<script type="text/javascript">
+  g1 = new Dygraph(
+    document.getElementById("graphdiv1"),
+    "kahvidatatail.csv", // path to CSV file
+    {
+	title: 'Uusin data',
+	labels: ['Time','Temp','Status'],
+	series: {
+	 'Status': {
+	  axis: 'y2',
+	 },
+	},
+	axes: {
+	 y: {
+	  drawGrid: true,
+	  independentTicks: true,
+	  valueRange: [15, 81],
+	 },
+	 y2: {
+	  labelsKMB: true,
+	  independentTicks: true,
+	  valueRange: [0, 6],
+	 }
+	},
+//	rollPeriod: 10,
+	showRoller: true,
+//	showRangeSelector: true,
+//	rangeSelectorHeight: 30,
+	
+	}          // options
+  );
+</script>
+
+<br>
+
+<!--Toinen kuvaaja-->
+
+<div id="graphdiv2"
+style="width:99%;float:left"></div>
+<script type="text/javascript">
+  g2 = new Dygraph(
+    document.getElementById("graphdiv2"),
+    "kahvidata.csv", 
+    {
+	title: 'Kaikki data',
+	labels: ['Time','Temp','Status'],
+	series: {
+	 'Status': {
+	  axis: 'y2',
+	 },
+	},
+	axes: {
+	 y: {
+	  drawGrid: true,
+	  independentTicks: true,
+	  valueRange: [15, 81],
+	 },
+	 y2: {
+	  labelsKMB: true,
+	  independentTicks: true,
+	  valueRange: [0, 6],
+	 }
+	},
+	showRoller: true,
+	}          // options
+  );
+</script>
+
+
+</body>
+
+Status: 5 kahvi tulossa, 4 ei kahvia, 3 tippa, 2 puoli pannua, 1 kokonainen pannu, 0 ohjelma bootattu.
+<br>
+Zoomaus maalaamalla, tuplaklikkaamalla palaa takaisin.
+</html>
+

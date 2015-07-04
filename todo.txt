@@ -1,0 +1,9 @@
+http://sik.ayy.fi/wiki/Elepaja/projects/Kahvi
+
+== Kehitysideoita== 
+# Napin sijaan ledit valoantureina
+# Koko keittimen punnitseminen
+## Suodatintötterön merkitys? (Märät purut)
+# Keittoajasta arvio keitetyn kahvin määrän (tyyliin kupillinen/puoli pannua/täysi pannu)
+# Näyttö jossa lukee keittoaika tms -> Potentiaaliseen piikkinäyttöön?
+
