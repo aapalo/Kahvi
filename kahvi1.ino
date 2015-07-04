@@ -1,6 +1,5 @@
 /*
- Pohjana charlie4 -aapalo
- Aloitettu 20.05.2015
+ Aloitettu 20.05.2015, Päivitetty 4.7.
  http://www.instructables.com/id/Charlieplexing-LEDs--The-theory/?ALLSTEPS
  3kpl 300 ohmin vastuksia, 6 lediä
  
@@ -9,7 +8,7 @@
  
  */
 /*
-     Lämpötila yli rajan -> ledi 3 päälle; 10 sek jälkeen ledi 2
+     Lämpötila yli rajan -> ledi 5 päälle; 10 sek jälkeen ledi 1
  Nappia painamalla laskuri rullaa ylöspäin
  pc:n terminaaliin "tail -f < /dev/ttyUSB0"
  tail pois päältä uploadauksen ajaksi
@@ -26,11 +25,11 @@
 #define buttonPin 4
 #define tempPin 3
 
-//Missa vaiheessa lampotila tarpeeksi korkea
-#define tempRaja 31.0
+//Missä vaiheessa lampötila noussut tarpeeksi
+#define tempRaja 40.0
 
 int buttonState = 0;
-int laskuri = 0;
+int laskuri = 4;
 int drop1 = 0;  //timestamp
 int tippuu = 0; //tippuuko kahvi
 
@@ -46,20 +45,18 @@ void funktio(int plus, int miinus, int nolla1) {
 
 //Tietty ledi päälle
 void ledi(int i){
-  if (i == 2)
+  if (i == 1)
+    funktio(L1,L0,L2); // 1
+  else if (i == 2)
     funktio(L0,L1,L2); // 2
+  else if (i == 3)
+    funktio(L1,L2,L0); // 3	
+  else if (i == 4)
+    funktio(L2,L1,L0); // 4  
   else if (i == 5)
     funktio(L0,L2,L1); // 5
-  else if (i == 1)
-    funktio(L1,L0,L2); // 1
-  else if (i == 3)
-    funktio(L1,L2,L0); // 3
   else if (i == 6)
     funktio(L2,L0,L1); // 
-  else if (i == 4)
-    funktio(L2,L1,L0); // 4
-
-
 }
 
 
