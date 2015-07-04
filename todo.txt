@@ -1,9 +1,16 @@
 http://sik.ayy.fi/wiki/Elepaja/projects/Kahvi
 
+== Koodausparannuksia ==
+# kahvi1.ino
+## nappula interruptiksi, jolloin ei luettaisi lämpötilaa -> viive pienenee
+### http://playground.arduino.cc/Code/Interrupts 
+
 == Kehitysideoita== 
 # Napin sijaan ledit valoantureina
 # Koko keittimen punnitseminen
 ## Suodatintötterön merkitys? (Märät purut)
-# Keittoajasta arvio keitetyn kahvin määrän (tyyliin kupillinen/puoli pannua/täysi pannu)
+### Vaikutus ehkä kupin verran? Vehje voisi myös katsoa onko suppilo paikallaan vai ei
+# Keittoajasta arvio keitetyn kahvin määrästä
+## Onko keitetty tyyliin kupillinen, puoli pannua vai täysi pannu
 # Näyttö jossa lukee keittoaika tms -> Potentiaaliseen piikkinäyttöön?
 
