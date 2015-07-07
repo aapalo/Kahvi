@@ -225,7 +225,7 @@ while 1:
 	#klo 08-20 tiuhempi mittausvali
 	if ((aika > 480) and (aika < 1200)):
 		#harvempi mittausvali kun pannu ei paalla
-		if (lampo < 30.0):
+		if (lampo < 40.0):
 			lisaviive = 40
 		else:
 			lisaviive = 0
