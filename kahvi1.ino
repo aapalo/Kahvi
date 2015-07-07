@@ -25,8 +25,8 @@
 #define buttonPin 4
 #define tempPin 3
 
-//Missä vaiheessa lampötila noussut tarpeeksi
-#define tempRaja 40.0
+//Kahvi tippumassa
+#define tempRaja 65.0
 
 int buttonState = 0;
 int laskuri = 4;
