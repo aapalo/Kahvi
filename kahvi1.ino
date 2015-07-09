@@ -178,8 +178,6 @@ void ykswire(void) {
     Serial.print(",");
   }
   Serial.println(laskuri);
-  if(!DEVAUS)
-    delay(1000); // 1s
 }
 
 void lamponappula(){
