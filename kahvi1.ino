@@ -74,7 +74,7 @@ void nappula(){
   if(nappi() ) {
     laskuri += 1;
   }
-  if(laskuri > 5)
+  if(laskuri > 4)
     laskuri = 1;   
   ledi(laskuri);
   delay(10);
@@ -173,8 +173,6 @@ void ykswire(void) {
     Serial.print(",");
   }
   Serial.println(laskuri);
-  if(!DEVAUS)
-    delay(1000); // 1s
 }
 
 void lamponappula(){
