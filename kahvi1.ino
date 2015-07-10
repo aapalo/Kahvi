@@ -161,7 +161,7 @@ void ykswire(void) {
     tippuu = 1;
   }
   if(tippuu){
-    if(tempRaja < celsius) {
+    if(celsius < (tempRaja - 1) ) {
       tippuu = 0;
       if( (millis()/1000 - drop1) < 120)
        laskuri = 3; //tippa
