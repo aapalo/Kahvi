@@ -8,16 +8,14 @@
  
  */
 /*
-     Lämpötila yli rajan -> ledi 5 päälle; 10 sek jälkeen ledi 1
+ Lämpötila yli rajan -> ledi 5 päälle
  Nappia painamalla laskuri rullaa ylöspäin
  pc:n terminaaliin "tail -f < /dev/ttyUSB0"
  tail pois päältä uploadauksen ajaksi
  */
 #define ONEWIRE_SEARCH 1
 #define ONEWIRE_CRC 1
-#include <OneWire.h> //ds
-
-#define DEVAUS 0
+#include <OneWire.h> //ds18b20
 
 #define L2 7
 #define L1 6
@@ -59,19 +57,9 @@ void ledi(int i){
     funktio(L2,L0,L1); // 
 }
 
-
-int nappi(){
-  buttonState = digitalRead(buttonPin);
-  // check if the pushbutton is pressed.
-  // if it is, return 1; else return 0
-  if (buttonState == HIGH)
-    return 1;
-  else
-    return 0;
-}
-
 void nappula(){
-  if(nappi() ) {
+  //nappi painettu
+  if (buttonState == HIGH) {
     laskuri += 1;
   }
   if(laskuri > 4)
@@ -84,7 +72,6 @@ void nappula(){
 //ds18b20
 OneWire ds(tempPin);
 
-
 void setup() {                
   pinMode(buttonPin, INPUT);
   pinMode(L0, OUTPUT);
@@ -95,8 +82,8 @@ void setup() {
   digitalWrite(L2, LOW);
 
   Serial.begin(9600);
-
 }
+
 //examples->OneWire->DS18x20_Temperature
 void ykswire(void) {
   byte i;
@@ -151,7 +138,6 @@ void ykswire(void) {
     // default is 12 bit resolution, 750 ms conversion time
   }
   celsius = (float)raw / 16.0;
-  //Serial.print(millis()/1000);
   Serial.print(celsius);
   Serial.print(",");
   nappula();
@@ -163,33 +149,17 @@ void ykswire(void) {
   if(tippuu){
     if(celsius < (tempRaja - 1) ) {
       tippuu = 0;
-      if( (millis()/1000 - drop1) < 120)
+      if( (millis()/1000 - drop1) < 130)
        laskuri = 3; //tippa
-      else if( (millis()/1000 - drop1 ) < 240)
+      else if( (millis()/1000 - drop1 ) < 250)
        laskuri = 2; //puolikas
       else
        laskuri = 1; //täysi
     }
   }
-  if(DEVAUS) {
-    Serial.print(tippuu);
-    Serial.print(",");
-    Serial.print(drop1);
-    Serial.print(",");
-  }
-  Serial.println(laskuri);
-}
-
-void lamponappula(){
-  //nappula();
-  Serial.print("\t");
   Serial.println(laskuri);
 }
 
 void loop() {
-  //nappula();
-  //lamponappula();
   ykswire();
 }
-
-
