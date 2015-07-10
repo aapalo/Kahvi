@@ -59,6 +59,7 @@ void ledi(int i){
 
 void nappula(){
   //nappi painettu
+  buttonstate = digitalRead(buttonPin);
   if (buttonState == HIGH) {
     laskuri += 1;
   }
