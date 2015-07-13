@@ -141,11 +141,11 @@ void ykswire(void) {
   celsius = (float)raw / 16.0;
   Serial.print(celsius);
   Serial.print(",");
-  nappula();
   if(celsius > tempRaja) {
     laskuri = 5;
     drop1 = millis()/1000;
     tippuu = 1;
+    ledi(laskuri);
   }
   if(tippuu){
     if(celsius < (tempRaja - 1) ) {
@@ -158,6 +158,8 @@ void ykswire(void) {
        laskuri = 1; //täysi
     }
   }
+  else 
+    nappula();
   Serial.println(laskuri);
 }
 
