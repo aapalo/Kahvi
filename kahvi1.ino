@@ -150,12 +150,11 @@ void ykswire(void) {
   if(tippuu){
     if(celsius < (tempRaja - 1) ) {
       tippuu = 0;
+      laskuri = 1; //täysi
+      if( (millis()/1000 - drop1 ) < 280)
+       laskuri = 2; //puolikas
       if( (millis()/1000 - drop1) < 160)
        laskuri = 3; //tippa
-      else if( (millis()/1000 - drop1 ) < 280)
-       laskuri = 2; //puolikas
-      else
-       laskuri = 1; //täysi
     }
   }
   else 
