@@ -112,7 +112,7 @@ while 1:
 			#os.system('cat /root/paja/kahvi/kahvidata.csv | ssh kahvi@sika "cat >> /home/kahvi/kahvidata.csv"')
 			#os.system('scp "%s" "kahvi@sika:"' % (tallennusosoite))
 			os.system('rsync --append "%s" "kahvi@sika:"' % (tallennusosoite))
-			os.system('ssh kahvi@sika "tail -n 5000 kahvidata.csv > kahvidatatail.csv"')
+			os.system('ssh kahvi@sika "tail -n 2000 kahvidata.csv > kahvidatatail.csv"')
 			csv_lahetetty = 1
 	else:
 		csv_lahetetty = 0
