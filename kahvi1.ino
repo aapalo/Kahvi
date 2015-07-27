@@ -28,7 +28,7 @@
 
 int buttonState = 0;
 int laskuri = 4;
-int drop1 = 0;  //timestamp
+unsigned long drop1 = 0;  //timestamp in milliseconds
 int tippuu = 0; //tippuuko kahvi
 
 //Ledi päälle
@@ -143,7 +143,7 @@ void ykswire(void) {
   Serial.print(",");
   if(celsius > tempRaja) {
     laskuri = 5;
-    drop1 = millis()/1000;
+    drop1 = millis();
     tippuu = 1;
     ledi(laskuri);
   }
@@ -151,9 +151,9 @@ void ykswire(void) {
     if(celsius < (tempRaja - 1) ) {
       tippuu = 0;
       laskuri = 1; //täysi
-      if( (millis()/1000 - drop1 ) < 280)
+      if( (millis() - drop1 ) < 280000UL)
        laskuri = 2; //puolikas
-      if( (millis()/1000 - drop1) < 160)
+      if( (millis() - drop1) < 160000UL)
        laskuri = 3; //tippa
     }
   }
