@@ -151,10 +151,13 @@ void ykswire(void) {
     if(celsius < (tempRaja - 1) ) {
       tippuu = 0;
       laskuri = 1; //täysi
+	//arviointi ei tunnu toimivan, TODO: korjaa
+	/*
       if( (millis() - drop1 ) < 280000UL)
        laskuri = 2; //puolikas
       if( (millis() - drop1) < 160000UL)
        laskuri = 3; //tippa
+	*/
     }
   }
   else 
