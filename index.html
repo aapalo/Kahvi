@@ -5,38 +5,122 @@
 <script type="text/javascript"
   src="http://dygraphs.com/dygraph-combined.js"></script>
 
+<!--Kolmas kuvaaja-->
+
+<div id="graphdiv3"
+style="width:99%;float:left"></div>
+
+
+<div style="text-align: center"><b>Zoom:</b>
+<a href="#" id="hour">hour</a>
+<a href="#" id="4hours">4 hours</a>
+<a href="#" id="day">day</a>
+<a href="#" id="week">week</a>
+<a href="#" id="month">month</a>
+<a href="#" id="full">full</a> <br>
+<input name="cups" type="checkbox" checked onclick="g3.setVisibility(0, this.checked);"> Cups
+<input name="temp" type="checkbox" checked onclick="g3.setVisibility(1, this.checked);"> Temp
+</div>
+<script type="text/javascript">
+  var k = new Date().getTime();
+  g3 = new Dygraph(
+    document.getElementById("graphdiv3"),
+    "data/kahviESP.csv",
+    {
+      showRoller: true,
+      title: 'Kahvivaaka',
+      labels: ['Time','Cups','Temp'],
+      series: {
+        'Cups': {
+          axis: 'y2',
+        },
+      },
+      axes: {
+     y2: {
+      labelsKMB: true,
+      independentTicks: true,
+      valueRange: [0, 10],
+     }
+      },
+      dateWindow: [k-3600000*4, k]
+    }
+  );
+
+  var desired_range = null;
+
+  function approach_range() {
+        if (!desired_range) return;
+        // go halfway there
+        var range = g3.xAxisRange();
+        if (Math.abs(desired_range[0] - range[0]) < 60 &&
+            Math.abs(desired_range[1] - range[1]) < 60) {
+          g.updateOptions({dateWindow: desired_range});
+          // (do not set another timeout.)
+        } else {
+          var new_range;
+          new_range = [0.5 * (desired_range[0] + range[0]),
+                       0.5 * (desired_range[1] + range[1])];
+          g3.updateOptions({dateWindow: new_range});
+          animate();
+        }
+  }
+  animate = function() {
+     setTimeout(approach_range, 50);
+  };
+
+  var zoom = function(res) {
+    k = new Date().getTime();
+    desired_range = [ k-res*1000, k];
+    animate();
+  };
+
+  function updategraph(){
+      g3.updateOptions({file: 'data/kahviESP.csv'});
+  }
+
+  setInterval(updategraph, 60000);
+
+  document.getElementById('hour').onclick = function() { zoom(3600); };
+  document.getElementById('4hours').onclick = function() { zoom(4*3600); };
+  document.getElementById('day').onclick = function() { zoom(86400); };
+  document.getElementById('week').onclick = function() { zoom(604800); };
+  document.getElementById('month').onclick = function() { zoom(30 * 86400); };
+  document.getElementById('full').onclick = function() { g3.resetZoom(); };
+</script>
+
+
 <div id="graphdiv1"
 style="width:99%;float:left"></div>
 <script type="text/javascript">
   g1 = new Dygraph(
     document.getElementById("graphdiv1"),
-    "kahvidatatail.csv", // path to CSV file
+    "data/kahvidatatail.csv", // path to CSV file
     {
-	title: 'Uusin data',
-	labels: ['Time','Temp','Status'],
-	series: {
-	 'Status': {
-	  axis: 'y2',
-	 },
-	},
-	axes: {
-	 y: {
-	  drawGrid: true,
-	  independentTicks: true,
-	  valueRange: [15, 81],
-	 },
-	 y2: {
-	  labelsKMB: true,
-	  independentTicks: true,
-	  valueRange: [0, 6],
-	 }
-	},
-//	rollPeriod: 10,
-	showRoller: true,
-//	showRangeSelector: true,
-//	rangeSelectorHeight: 30,
-	
-	}          // options
+    title: 'Kahvinappi: Uusin data',
+    labels: ['Time','Temp','Status'],
+    series: {
+     'Status': {
+      axis: 'y2',
+     },
+    },
+    axes: {
+     y: {
+      drawGrid: true,
+      independentTicks: true,
+      valueRange: [15, 81],
+     },
+     y2: {
+      labelsKMB: true,
+      independentTicks: true,
+      valueRange: [0, 6],
+     }
+    },
+//  rollPeriod: 10,
+    showRoller: true,
+//  showRangeSelector: true,
+//  rangeSelectorHeight: 30,
+    
+    }          // options
   );
 </script>
 
@@ -49,37 +133,37 @@ style="width:99%;float:left"></div>
 <script type="text/javascript">
   g2 = new Dygraph(
     document.getElementById("graphdiv2"),
-    "kahvidata.csv", 
+    "data/kahvidata.csv", 
     {
-	title: 'Kaikki data',
-	labels: ['Time','Temp','Status'],
-	series: {
-	 'Status': {
-	  axis: 'y2',
-	 },
-	},
-	axes: {
-	 y: {
-	  drawGrid: true,
-	  independentTicks: true,
-	  valueRange: [15, 81],
-	 },
-	 y2: {
-	  labelsKMB: true,
-	  independentTicks: true,
-	  valueRange: [0, 6],
-	 }
-	},
-	showRoller: true,
-	}          // options
+    title: 'Kahvinappi: Kaikki data',
+    labels: ['Time','Temp','Status'],
+    series: {
+     'Status': {
+      axis: 'y2',
+     },
+    },
+    axes: {
+     y: {
+      drawGrid: true,
+      independentTicks: true,
+      valueRange: [15, 81],
+     },
+     y2: {
+      labelsKMB: true,
+      independentTicks: true,
+      valueRange: [0, 6],
+     }
+    },
+    showRoller: true,
+    }          // options
   );
 </script>
-
-
-</body>
-
-Status: 5 kahvi tippumassa, 4 ei kahvia, 3 tippa, 2 puoli pannua, 1 kokonainen pannu.
+Status: 5 kahvi tulossa, 4 ei kahvia, 3 tippa, 2 puoli pannua, 1 kokonainen pannu
 <br>
+
+<p>
 Zoomaus maalaamalla, tuplaklikkaamalla palaa takaisin.
+</body>
 </html>
+
 
