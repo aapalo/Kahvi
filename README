@@ -1,3 +1,5 @@
+Kiltiksen kahvianturin eka iterointi. Toisen iteroinnin (vaaka + esp8266) toteuttanut Temez.
+
 
 Muokattavat tiedostot:
 
@@ -8,3 +10,18 @@ Muokattavat tiedostot:
 
 Muut:
 * kahvi2.pdf	Kaaviokuva kytkennästä
+
+--------
+
+First iteration of coffee bot. Second version made by Temez and it uses a scale and esp8266.
+
+
+Modifiable files:
+
+* kahvi1.ino	@Iteaduino. 
+* kahvi.py	@PC. Reads status and temperature, saves data and sends to server.
+* index.html	@Webserver. Draws the graphs using dygraphs
+* todo.txt	Things to do
+
+Other:
+* kahvi2.pdf	Chart of circuit

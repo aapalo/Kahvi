@@ -13,6 +13,17 @@
  pc:n terminaaliin "tail -f < /dev/ttyUSB0"
  tail pois päältä uploadauksen ajaksi
  */
+
+// ----------------------------
+
+/*
+ 3pcs of 300 Ohm resistors, 6 LEDs, button
+ Temperature over the limit -> turn LED 5 on
+ Push the button -> counter++
+*/
+
+// ----------------------------
+
 #define ONEWIRE_SEARCH 1
 #define ONEWIRE_CRC 1
 #include <OneWire.h> //ds18b20
@@ -29,9 +40,9 @@
 int buttonState = 0;
 int laskuri = 4;
 unsigned long drop1 = 0;  //timestamp in milliseconds
-int tippuu = 0; //tippuuko kahvi
+int tippuu = 0; //tippuuko kahvi	//coffee dripping?
 
-//Ledi päälle
+//Turn LED on
 void funktio(int plus, int miinus, int nolla1) {
   //setup();
   pinMode(plus, OUTPUT);
@@ -41,7 +52,7 @@ void funktio(int plus, int miinus, int nolla1) {
   digitalWrite(miinus, LOW);
 }
 
-//Tietty ledi päälle
+//Turn a certain LED on
 void ledi(int i){
   if (i == 1)
     funktio(L1,L0,L2); // 1
@@ -58,7 +69,7 @@ void ledi(int i){
 }
 
 void nappula(){
-  //nappi painettu
+  //nappi painettu	//button pushed
   buttonState = digitalRead(buttonPin);
   if (buttonState == HIGH) {
     laskuri += 1;
