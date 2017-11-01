@@ -2,6 +2,7 @@ HUOM: Kahvianturi ei enää käytössä.
 
 Kiltiksen kahvianturin eka iterointi. Toisen (ja paljon paremman) version (vaaka + esp8266) toteuttanut Temez.
 
+Uusi kahvivaakajärjestelmä: https://github.com/elepaja/kahvivaaka
 
 Muokattavat tiedostot:
 
@@ -17,6 +18,8 @@ Muut:
 Note: This coffee sensor no longer in use.
 
 First iteration of coffee bot. Second (much better) version made by Temez and it uses a scale with esp8266.
+
+New coffee scale system: https://github.com/elepaja/kahvivaaka
 
 
 Modifiable files:

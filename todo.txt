@@ -9,8 +9,11 @@ http://sik.ayy.fi/wiki/Elepaja/projects/Kahvi
 # Napin sijaan ledit valoantureina
 # Koko keittimen punnitseminen
 ## Suodatintötterön merkitys? (Märät purut)
-### Vaikutus ehkä kupin verran? Vehje voisi myös katsoa onko suppilo paikallaan vai ei
+### Vaikutus ehkä kupin verran? Vehje voisi myös katsoa onko suppilo paikallaan
+    vai ei
 # Keittoajasta arvio keitetyn kahvin määrästä
 ## Onko keitetty tyyliin kupillinen, puoli pannua vai täysi pannu
 # Näyttö jossa lukee keittoaika tms -> Potentiaaliseen piikkinäyttöön?
 
+Huomaa, että osa näistä kehitysideoista on huomioitu uudessa kahvivaa'assa,
+ks. https://github.com/elepaja/kahvivaaka ja http://ka.dy.fi/
